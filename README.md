@@ -16,3 +16,7 @@ Please refer to the [Rapid Fire Version History](<https://rdi-open-source.github
 
 * Copies live data on IBM i.
 * Reduces system down time to a minimum.
+
+## See Also
+
+* [Rapid Fire Update Site](https://github.com/rdi-open-source/rapid-fire)
