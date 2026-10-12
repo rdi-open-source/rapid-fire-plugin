@@ -24,9 +24,9 @@ import java.util.Locale;
 import java.util.Properties;
 import java.util.Set;
 
-import junit.framework.JUnit4TestAdapter;
-
 import org.junit.Test;
+
+import junit.framework.JUnit4TestAdapter;
 
 /**
  * <b>JUnit 4 Test Case</b>
@@ -168,29 +168,7 @@ public class CheckNLSMessages {
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         URL[] urls = getClassLoaderUrls(classLoader);
 
-        // Child-first: loads the target class fresh from urls so that the
-        // static
-        // NLS initializer re-runs for each locale, while platform dependencies
-        // (e.g. org.eclipse.osgi.util.NLS) are resolved via the parent chain.
-        URLClassLoader loader = new URLClassLoader(urls, classLoader) {
-            @Override
-            protected Class<?> loadClass(String name, boolean resolve) throws ClassNotFoundException {
-                synchronized (getClassLoadingLock(name)) {
-                    Class<?> c = findLoadedClass(name);
-                    if (c == null) {
-                        try {
-                            c = findClass(name);
-                        } catch (ClassNotFoundException e) {
-                            c = getParent().loadClass(name);
-                        }
-                    }
-                    if (resolve) {
-                        resolveClass(c);
-                    }
-                    return c;
-                }
-            }
-        };
+        URLClassLoader loader = new URLClassLoader(urls, null);
         Class<?> clazz = loader.loadClass(aClass.getName());
 
         Constructor<?> constructor = clazz.getDeclaredConstructor(new Class[0]);
@@ -209,23 +187,6 @@ public class CheckNLSMessages {
         if (classLoader instanceof URLClassLoader) {
             // Java 8 and earlier
             return ((URLClassLoader)classLoader).getURLs();
-        }
-
-        // Ant non-forked mode: AntClassLoader is not a URLClassLoader but
-        // exposes getClasspath()
-        try {
-            Method getClasspath = classLoader.getClass().getMethod("getClasspath");
-            String antClasspath = (String)getClasspath.invoke(classLoader);
-            if (antClasspath != null && !antClasspath.isEmpty()) {
-                String[] paths = antClasspath.split(System.getProperty("path.separator"));
-                URL[] urls = new URL[paths.length];
-                for (int i = 0; i < paths.length; i++) {
-                    urls[i] = new java.io.File(paths[i]).toURI().toURL();
-                }
-                return urls;
-            }
-        } catch (Exception ignored) {
-            // Not an AntClassLoader, fall through to java.class.path
         }
 
         // Java 9+: Use java.class.path system property
