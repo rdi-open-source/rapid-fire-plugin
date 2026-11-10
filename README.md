@@ -17,6 +17,10 @@ Please refer to the [Rapid Fire Version History](<https://rdi-open-source.github
 * Copies live data on IBM i.
 * Reduces system down time to a minimum.
 
+## Liability
+
+This software is free and provided without warranty. You use it at your own risk: test it with non-critical data first, and back up your data before you use it. The [license](LICENSE) applies in addition.
+
 ## See Also
 
 * [Rapid Fire Update Site](https://github.com/rdi-open-source/rapid-fire)
