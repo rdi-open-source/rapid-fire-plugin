@@ -17,6 +17,18 @@ Please refer to the [Rapid Fire Version History](<https://rdi-open-source.github
 * Copies live data on IBM i.
 * Reduces system down time to a minimum.
 
+## Installation
+
+1. Select **Help > Install New Software...** in RDi.
+2. Enter the update site `https://rdi-open-source.github.io/rapid-fire/update-site/eclipse/rdi8.0/` and select the features of Rapid Fire.
+3. Finish the wizard and restart RDi.
+
+Then install the Rapid Fire library on the IBM i, see [Install Instructions](https://rdi-open-source.github.io/rapid-fire/help/html/install/install_library.html) in the help.
+
+## Usage
+
+How to use Rapid Fire is described in the [help](https://rdi-open-source.github.io/rapid-fire/help/). It is part of the plug-in as well: **Help > Help Contents > Rapid Fire** in RDi.
+
 ## Liability
 
 This software is free and provided without warranty. You use it at your own risk: test it with non-critical data first, and back up your data before you use it. The [license](LICENSE) applies in addition.
