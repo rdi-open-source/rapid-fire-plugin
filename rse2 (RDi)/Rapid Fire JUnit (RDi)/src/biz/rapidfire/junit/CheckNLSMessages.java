@@ -16,7 +16,6 @@ import static org.junit.Assert.assertTrue;
 import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -31,9 +30,9 @@ import junit.framework.JUnit4TestAdapter;
 /**
  * <b>JUnit 4 Test Case</b>
  * <p>
- * Verifies that all message constants of the iSphere <i>Messages</i> objects
- * have a corresponding message text entry. Also ensure that there are no dead
- * text entries in the property files.
+ * Verifies that all message constants of the <i>Messages</i> objects have a
+ * corresponding message text entry. Also ensure that there are no dead text
+ * entries in the property files.
  * <p>
  * This class uses reflection to get the list of message constants. It
  * instantiates a new dedicated class loader to ensure that the static message
@@ -51,14 +50,15 @@ public class CheckNLSMessages {
     private final String[] locales = new String[] { defaultLocale };
 
     /**
-     * Verifies the NLS messages of the iSphere project.
+     * Verifies the NLS messages of the project.
      * 
      * @throws Exception
      */
     @Test
     public void testNLSMessages() throws Exception {
-
         checkMessagesForLocales(biz.rapidfire.core.Messages.class, "messages");
+        checkMessagesForLocales(biz.rapidfire.core.swt.widgets.listeditors.librarylist.Messages.class, "messages");
+        checkMessagesForLocales(biz.rapidfire.core.swt.widgets.listeditors.stringlist.Messages.class, "messages");
         checkMessagesForLocales(biz.rapidfire.rse.Messages.class, "messages");
 
         System.out.println("** Finished testing NLS messages **");
@@ -167,7 +167,6 @@ public class CheckNLSMessages {
 
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         URL[] urls = getClassLoaderUrls(classLoader);
-
         URLClassLoader loader = new URLClassLoader(urls, null);
         Class<?> clazz = loader.loadClass(aClass.getName());
 
