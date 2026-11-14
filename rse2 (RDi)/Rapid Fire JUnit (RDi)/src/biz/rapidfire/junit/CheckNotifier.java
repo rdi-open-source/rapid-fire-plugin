@@ -83,7 +83,7 @@ public class CheckNotifier {
     private String getWorkspaceLocation() {
 
         // Get classes directory ('/bin')
-        String fullPath = getClass().getClassLoader().getResource(".").getPath().replaceAll("%20", " ") + "..\\..";
+        String fullPath = getClass().getClassLoader().getResource(".").getPath().replaceAll("%20", " ");
 
         if (fullPath.endsWith("/")) {
 
@@ -91,7 +91,7 @@ public class CheckNotifier {
             fullPath = fullPath.substring(0, fullPath.length() - 1);
 
             // Remove trailing '/bin' and project name from path
-            for (int c = 1; c <= 2; c++) {
+            for (int c = 1; c <= 3; c++) {
                 int i = fullPath.lastIndexOf("/");
                 if (i != -1) {
                     fullPath = fullPath.substring(0, i);
@@ -139,7 +139,7 @@ public class CheckNotifier {
     }
 
     private String getProjectName() {
-        return workspace + "/" + NOTIFIER_PROJECT_NAME + "/MANIFEST.MF";
+        return workspace + "/build/" + NOTIFIER_PROJECT_NAME + "/MANIFEST.MF";
     }
 
     private String getString(Manifest manifest, String version, boolean replaceControlCharacter) throws BundleException {
