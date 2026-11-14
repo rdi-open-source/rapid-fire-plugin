@@ -6,6 +6,5 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/Rapid Fire Base Plugin (RDi)"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Rapid Fire Core Plugin"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Rapid Fire RSE Plugin (RDi)"/>
-	<classpathentry kind="var" path="IBM_SHARED_PLUGINS/org.eclipse.osgi_3.11.4.v20191007-1806.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

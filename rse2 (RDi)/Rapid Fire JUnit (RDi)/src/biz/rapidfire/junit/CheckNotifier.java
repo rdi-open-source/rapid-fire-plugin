@@ -13,16 +13,11 @@ import static org.junit.Assert.assertTrue;
 import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.Iterator;
-import java.util.Properties;
-import java.util.jar.Attributes;
 import java.util.jar.Manifest;
 
 import junit.framework.JUnit4TestAdapter;
 
-import org.eclipse.osgi.util.ManifestElement;
 import org.junit.Test;
-import org.osgi.framework.BundleException;
 
 import biz.rapidfire.core.notifier.Version;
 
@@ -142,7 +137,7 @@ public class CheckNotifier {
         return workspace + "/build/" + NOTIFIER_PROJECT_NAME + "/MANIFEST.MF";
     }
 
-    private String getString(Manifest manifest, String version, boolean replaceControlCharacter) throws BundleException {
+    private String getString(Manifest manifest, String version, boolean replaceControlCharacter) {
 
         String value = getString(manifest, version);
         if (value == null) {
@@ -154,37 +149,7 @@ public class CheckNotifier {
         return value;
     }
 
-    private String getString(Manifest manifest, String version) throws BundleException {
-
-        String[] propertyValues = getPropertyValues(manifest, version);
-        if (propertyValues != null && propertyValues.length == 1) {
-            return propertyValues[0];
-        }
-
-        return null;
-    }
-
-    private String[] getPropertyValues(Manifest manifest, String property) throws BundleException {
-        String[] propertyValues = null;
-        Properties prop = _manifestToProperties(manifest.getMainAttributes());
-        String requires = prop.getProperty(property);
-        if (requires != null) {
-            ManifestElement elements[] = ManifestElement.parseHeader(property, requires);
-            propertyValues = new String[elements.length];
-            for (int idx = 0; idx < elements.length; idx++) {
-                propertyValues[idx] = elements[idx].getValue();
-            }
-        }
-        return propertyValues;
-    }
-
-    private Properties _manifestToProperties(Attributes d) {
-        Iterator<?> iter = d.keySet().iterator();
-        Properties result = new Properties();
-        Attributes.Name key;
-        for (; iter.hasNext(); result.put(key.toString(), d.get(key)))
-            key = (Attributes.Name)iter.next();
-
-        return result;
+    private String getString(Manifest manifest, String version) {
+        return manifest.getMainAttributes().getValue(version);
     }
 }
