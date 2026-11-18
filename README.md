@@ -4,13 +4,13 @@ Rapid Fire - Copying live data on IBM i
 
 ## Description
 
-Do you have files with millions or even billions of records? Imagine you have to change such a file e.g. a new field has to be added. Maybe your system is really fast and you have the time to install that change at the weekend. But what to do if your shop must be available almost 24/7? In this case it is required to reduce the downtime as much as possible.
+Do you have files with millions or even billions of records? Imagine you have to change such a file, e.g. because a new field has to be added. Possibly you have the time to install this change at the weekend. But what if your shop works 24 hours a day, 7 days a week? In this case, it is absolutely necessary to reduce the time needed for the installation to avoid a long shutdown of the system.
 
-That is where Rapid Fire comes in play. Rapid Fire reduces the downtime of your system to a minimum. Instead of shutting down the system for hours or even days you will be offline for a couple of minutes.
+This is where Rapid Fire comes in. With Rapid Fire, it is possible to reduce the downtime of your system to a minimum. Instead of shutting down the system for hours or even days, you are offline for just a few minutes.
 
-Further information about Rapid Fire are available on the [Rapid Fire Site](https://rdi-open-source.github.io/rapid-fire/).
+Further information about Rapid Fire is available on the [Rapid Fire Site](https://rdi-open-source.github.io/rapid-fire/).
 
-Please refer to the [Rapid Fire Version History](<https://rdi-open-source.github.io/rapid-fire/files/Rapid Fire.pdf>) document to find out which operating system release is required for installing the Rapid Fire library.
+How Rapid Fire works is described in the [Rapid Fire manual](<https://rdi-open-source.github.io/rapid-fire/files/Rapid Fire.pdf>).
 
 ## Features
 
@@ -20,6 +20,12 @@ Please refer to the [Rapid Fire Version History](<https://rdi-open-source.github
 * Reduces the downtime of your system to a couple of minutes.
 * Creates, tests, starts and monitors the Rapid Fire jobs in RDi, with a view of the file copy status.
 * Activity plan: the time frames in which a job is allowed to copy data.
+
+## Requirements
+
+* IBM i 7.2 or later for the Rapid Fire library.
+* RDi 9.6.0.13 or later.
+* The FTP server of the IBM i, for transferring the Rapid Fire library from RDi.
 
 ## Installation
 
