@@ -14,8 +14,12 @@ Please refer to the [Rapid Fire Version History](<https://rdi-open-source.github
 
 ## Features
 
-* Copies live data on IBM i.
-* Reduces system down time to a minimum.
+* Copies the data of a file into the new file in a shadow library, while the users keep on working.
+* Generates the RPG program that copies the data.
+* Starts journaling the file and applies the changes made during the copy from the journal.
+* Reduces the downtime of your system to a couple of minutes.
+* Creates, tests, starts and monitors the Rapid Fire jobs in RDi, with a view of the file copy status.
+* Activity plan: the time frames in which a job is allowed to copy data.
 
 ## Installation
 
